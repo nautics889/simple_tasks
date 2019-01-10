@@ -1,19 +1,20 @@
 import random
 
 
-def search_repeating_numbers(n):
+def repeating_numbers(n):
     integer_list = [random.randint(0, 10) for _ in range(n)]
     print(f'List: {integer_list}')
+    repeating_numbers = []
 
-    for item in integer_list:
-        if integer_list.count(item) >= 2:
-            yield item
+    for i in range(len(integer_list)):
+        for j in range(len(integer_list)):
+            if i != j and integer_list[i] == integer_list[j] and integer_list[i] not in repeating_numbers:
+                repeating_numbers.append(integer_list[i])
+
+    return repeating_numbers
+
 
 if __name__ == '__main__':
     n = 7
 
-    repeating_numbers = set()
-    for item in search_repeating_numbers(n):
-        repeating_numbers.add(item)
-
-    print(f'Repeating numbers: {repeating_numbers}')
+    print(f'Repeating numbers: {repeating_numbers(n)}')
