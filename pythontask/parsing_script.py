@@ -6,12 +6,11 @@ def parse_company_and_username(filename, clear=False):
     try:
         with open(filename, 'r') as input_file:
             for row in input_file:
-                try:
-                    name, company = re.split(r'@', row)
-                except:
-                    continue
-                name = ''.join(i for i in name if not i.isdigit()) if clear else name
-                yield re.sub(r'\W', r' ', name), company[:company.find(r'.')]
+                if clear:
+                    name, company = re.search(r'([\D]+).*@(\w+)', row).groups()
+                else:
+                    name, company = re.search(r'([\w\.]+)@(\w+)', row).groups()
+                yield (name, company)
     except FileNotFoundError:
         print('Input file not found. Please, specify correct file or leave it empty to open "emails.txt" by default')
 
