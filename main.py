@@ -2,6 +2,7 @@ from learning_enumerate import learning_enumerate
 from staticmethods_and_properties import staticmethods_and_classmethods, setters_and_getters
 from greedy_nongreedy_re import greedy_nongreedy
 from timedelta import timedelta_example
+from bitwise_operations.bitwise_operations import bitwise_operations_example
 
 import time
 
@@ -31,3 +32,8 @@ if __name__ == "__main__":
     print('\n')
 
     timedelta_example.example_of_usage_timedelta()
+
+    time.sleep(1)
+    print('\n')
+
+    bitwise_operations_example()
